@@ -13,20 +13,19 @@ const Home = () => {
           <img src={BannerBackground} alt="" />
         </div>
         <div className="home-text-section">
-          <h1 className="primary-heading">
-            Insurance
-          </h1>
+          <h1 className="primary-heading">Insurance</h1>
+          
           <p className="primary-text">
-          It's a way to protect your loved ones, property, business and lifestyle from financial losses and unexpected costs
+            It's a way to protect your loved ones, property, business, and lifestyle from financial losses and unexpected costs
           </p>
           <button className="secondary-button">
-            Explore Now <FiArrowRight />{" "}
+            Explore Now <FiArrowRight />
           </button>
+          
         </div>
         <div className="home-image-section">
-           <Video/>
+          <Video />
         </div>
-      
       </div>
     </div>
   );

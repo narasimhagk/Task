@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-// import "../App.css"; // Make sure to create a Video.css file for styling
+import './Video.css'; // Import your Video.css file for styling
 
 const Video = () => {
   const videoId = 'CdDCUyyyPc0'; // Your YouTube video ID
@@ -17,6 +17,7 @@ const Video = () => {
         playerVars: {
           autoplay: 1, // Autoplay enabled
           controls: 1, // Show video controls
+          mute: 1,     // Mute the video
         },
       });
     };
@@ -28,7 +29,9 @@ const Video = () => {
     };
   }, [videoId]);
 
-  return <div id="video-player" className="video-container"></div>;
+  return <div id="video-player" className="video-container">
+    
+  </div>;
 };
 
 export default Video;
