@@ -1,28 +1,28 @@
 import React, { useEffect } from 'react';
-import './Video.css'; // Import your Video.css file for styling
+import './Video.css'; 
 
 const Video = () => {
-  const videoId = 'CdDCUyyyPc0'; // Your YouTube video ID
+  const videoId = 'K4TOrB7at0Y'; 
 
   useEffect(() => {
-    // Load YouTube IFrame API script
+    
     const script = document.createElement('script');
     script.src = 'https://www.youtube.com/iframe_api';
     document.body.appendChild(script);
 
-    // Initialize the YouTube player when the API is ready
+    
     window.onYouTubeIframeAPIReady = () => {
       new window.YT.Player('video-player', {
         videoId: videoId,
         playerVars: {
-          autoplay: 1, // Autoplay enabled
-          controls: 1, // Show video controls
-          mute: 1,     // Mute the video
+          autoplay: 1, 
+          controls: 1, 
+          mute: 1,     
         },
       });
     };
 
-    // Clean up
+ 
     return () => {
       document.body.removeChild(script);
       delete window.onYouTubeIframeAPIReady;

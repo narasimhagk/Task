@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Logo from "../Assets/Logo.png";
-import { BsCart2 } from "react-icons/bs";
 import { HiOutlineBars3 } from "react-icons/hi2";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
@@ -13,8 +12,7 @@ import ListItemText from "@mui/material/ListItemText";
 import HomeIcon from "@mui/icons-material/Home";
 import InfoIcon from "@mui/icons-material/Info";
 import CommentRoundedIcon from "@mui/icons-material/CommentRounded";
-import PhoneRoundedIcon from "@mui/icons-material/PhoneRounded";
-import ShoppingCartRoundedIcon from "@mui/icons-material/ShoppingCartRounded";
+import "./DropDownMenu.css";
 
 const Navbar = () => {
   const [openMenu, setOpenMenu] = useState(false);
@@ -32,17 +30,44 @@ const Navbar = () => {
       icon: <CommentRoundedIcon />,
     },
   ];
+  
+  const toggleMenu = () => {
+    setOpenMenu(!openMenu);
+  };
+  
   return (
     <nav>
       <div className="nav-logo-container">
-        <img src={Logo} style={{ width: 175, height: 55, viewBox: "0 0 175 35", fill: "none" }} alt="" />
+        <img src={Logo} style={{ width: 175, height: 55 }} alt="" />
       </div>
       <div className="navbar-links-container">
-        <a href="/">Insurance</a>
-        <a href="/">Health Insurance</a>
-        <a href="/">Car Insurance</a>
+        <div className="dropdown">
+          <button className="dropbtn" onClick={toggleMenu}>Car Insurance</button>
+          <div className={`dropdown-content ${openMenu ? "show" : ""}`}>
+            <a href="#">Link 1</a>
+            <a href="#">Link 2</a>
+            <a href="#">Link 3</a>
+          </div>
+        </div>
+        <div className="dropdown">
+          <button className="dropbtn" onClick={toggleMenu}>Insurance</button>
+          <div className={`dropdown-content ${openMenu ? "show" : ""}`}>
+            <a href="#">Link 1</a>
+            <a href="#">Link 2</a>
+            <a href="#">Link 3</a>
+          </div>
+        </div>
+        <div className="dropdown">
+          <button className="dropbtn" onClick={toggleMenu}>Health Insurance</button>
+          <div className={`dropdown-content ${openMenu ? "show" : ""}`}>
+            <a href="#">Link 1</a>
+            <a href="#">Link 2</a>
+            <a href="#">Link 3</a>
+          </div>
+        </div>
         
-       
+     
+        
         <button className="primary-button">Login/Signup</button>
       </div>
       <div className="navbar-menu-container">

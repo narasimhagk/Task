@@ -15,20 +15,28 @@ const items = [
     
     <div className="carousel-item" data-value="1">
         <div className="carousel-img">
-            <img src="https://www.copycat.dev/blog/wp-content/uploads/2022/12/rc.png" alt='' />
+            <img src="https://img.freepik.com/free-vector/background-coming-soon-with-clock_1017-5059.jpg" alt='' />
             <div className="carousel-hover-content">
-                Hover content 1
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam, repellendus.
             </div>
         </div>
     </div>,
      <div className="carousel-item" data-value="1">
         <div className="carousel-img">
-            <img src="https://www.copycat.dev/blog/wp-content/uploads/2022/12/rc.png" alt='' />
+            <img src="https://img.freepik.com/free-vector/background-coming-soon-with-clock_1017-5059.jpg" alt=''  />
             <div className="carousel-hover-content">
-                Hover content 1
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, aliquam.
             </div>
         </div>
     </div>,
+    <div className="carousel-item" data-value="1">
+        <div className="carousel-img">
+            <img src="https://img.freepik.com/free-vector/background-coming-soon-with-clock_1017-5059.jpg" alt='' />
+            <div className="carousel-hover-content">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, accusantium?
+            </div>
+        </div>
+    </div>
     // ... other items ...
 ];
 
