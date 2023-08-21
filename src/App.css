@@ -85,12 +85,15 @@ nav {
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+  margin-bottom: 10%;
 }
 .primary-heading {
   font-size: clamp(2rem, 5vw, 4rem);
   color: #241d1d;
   /* line-height: 5rem; */
   max-width: 600px;
+  top:0;
+  bottom:10px;
 }
 .primary-text {
   font-size: clamp(1rem, 3vw, 1.5rem);
@@ -440,4 +443,21 @@ nav {
   display: inline-block;
   margin: 40px;
   text-align: center;
+}
+.home-image-section{
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+  margin-top: 10%;
+  padding-left: 10%;
+  size: 100%;
+  
+  
+}
+@media(max-width:100%){
+  .home-image-between-section{
+    flex-direction: column;
+    
+    
+  }
 }

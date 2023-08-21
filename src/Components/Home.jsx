@@ -23,8 +23,11 @@ const Home = () => {
           </button>
           
         </div>
-        <div className="home-image-section">
-          <Video />
+        <div className="home-image-section" >
+        <div className="responsive-video-container" >
+        <Video />
+        </div>
+          
         </div>
       </div>
     </div>

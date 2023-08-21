@@ -29,7 +29,7 @@ const Video = () => {
     };
   }, [videoId]);
 
-  return <div id="video-player" className="video-container">
+  return <div id="video-player" className="video-container" >
     
   </div>;
 };
