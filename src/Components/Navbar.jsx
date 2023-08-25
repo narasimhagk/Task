@@ -15,7 +15,8 @@ import InfoIcon from "@mui/icons-material/Info";
 import CommentRoundedIcon from "@mui/icons-material/CommentRounded";
 import "./DropDownMenu.css";
 import "../App.css"
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import {Route,Switch} from "react-router-dom"
+
 import Csv from "./Csv"
 
 const Navbar = () => {
@@ -53,12 +54,12 @@ const Navbar = () => {
             {/* Change the link to match the correct route path */}
            <ul>
            <li>
-                <Link to="/health-insurance">Health Insurance</Link>
+                <a href="/health-insurance">Health Insurance</a>
               </li>
            </ul>
-           <Routes>
-           <Route path="/health-insurance" element={<Csv />} />
-            </Routes>
+           <Switch>
+           <Route path="/health-insurance" Component={<Csv />} />
+            </Switch>
           </div>
         </div>
         {/* ... (other dropdowns) */}
