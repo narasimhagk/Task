@@ -1,17 +1,22 @@
 import React from "react";
 import BannerBackground from "../Assets/home-banner-background.png";
+import "../App.css";
+import {Routes, Route} from 'react-router-dom'
 import Navbar from "./Navbar";
 import Video from "./Video";
 import { FiArrowRight } from "react-icons/fi";
+// import Employee from "./Employee";
+import DataGridTypeMatrixTable from "./DataGridTypeMatrixTable";
 
 const Home = () => {
   return (
     <div className="home-container">
-      <Navbar />
+  <Navbar/>
       <div className="home-banner-container">
         <div className="home-bannerImage-container">
           <img src={BannerBackground} alt="" />
         </div>
+        
         <div className="home-text-section">
           <h1 className="primary-heading">Insurance</h1>
           
@@ -30,8 +35,10 @@ const Home = () => {
           
         </div>
       </div>
+      <DataGridTypeMatrixTable/>
     </div>
   );
 };
 
 export default Home;
+
