@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import Logo from "../Assets/Logo.png"
+import Logo from "../Assets/Logo.png";
 import { HiOutlineBars3 } from "react-icons/hi2";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
@@ -14,10 +14,10 @@ import HomeIcon from "@mui/icons-material/Home";
 import InfoIcon from "@mui/icons-material/Info";
 import CommentRoundedIcon from "@mui/icons-material/CommentRounded";
 import "./DropDownMenu.css";
-import "../App.css"
-import {Route,Switch} from "react-router-dom"
-
-import Csv from "./Csv"
+import "../App.css";
+import { Route, Switch } from "react-router-dom";
+import Csv from "./Csv";
+import Admin from "./Admin"; // Import the Admin component
 
 const Navbar = () => {
   const [openMenu, setOpenMenu] = useState(false);
@@ -52,17 +52,19 @@ const Navbar = () => {
           </button>
           <div className={`dropdown-content ${openMenu ? "show" : ""}`}>
             {/* Change the link to match the correct route path */}
-           <ul>
-           <li>
+            <ul>
+              <li>
                 <a href="/health-insurance">Health Insurance</a>
+                <a href="/car-insurance">car insurance</a>
               </li>
-           </ul>
-           <Switch>
-           <Route path="/health-insurance" Component={<Csv />} />
+            </ul>
+            <Switch>
+              <Route path="/health-insurance" component={Csv} />
+              <Route path="/car-insurance" component={Admin} />
             </Switch>
           </div>
         </div>
-        {/* ... (other dropdowns) */}
+        <Link to="/admin">Admin</Link> {/* Add a link to the Admin page */}
         <button className="primary-button">Login/Signup</button>
       </div>
       <div className="navbar-menu-container">

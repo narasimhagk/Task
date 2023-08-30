@@ -75,7 +75,9 @@ class DataGridTypeMatrixTable extends Component {
     const currentUser = this.state.arrayEdit;
 
     return (
+      
       <div className="size">
+      
 	  <div className={classes.root}>
        
 	  <MUIDataTable
