@@ -1,5 +1,7 @@
+// Import your Product and Admin components here
+
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
 import Logo from "../Assets/Logo.png";
 import { HiOutlineBars3 } from "react-icons/hi2";
 import Box from "@mui/material/Box";
@@ -15,9 +17,8 @@ import InfoIcon from "@mui/icons-material/Info";
 import CommentRoundedIcon from "@mui/icons-material/CommentRounded";
 import "./DropDownMenu.css";
 import "../App.css";
-import { Route, Switch } from "react-router-dom";
-import Csv from "./Csv";
-import Admin from "./Admin"; // Import the Admin component
+import Admin from "./Admin";
+import Csv from "./Csv"
 
 const Navbar = () => {
   const [openMenu, setOpenMenu] = useState(false);
@@ -51,24 +52,20 @@ const Navbar = () => {
             Car Insurance
           </button>
           <div className={`dropdown-content ${openMenu ? "show" : ""}`}>
-            {/* Change the link to match the correct route path */}
-            <ul>
-              <li>
-                <a href="/health-insurance">Health Insurance</a>
-                <a href="/car-insurance">car insurance</a>
-              </li>
-            </ul>
-            <Switch>
-              <Route path="/health-insurance" component={Csv} />
-              <Route path="/car-insurance" component={Admin} />
-            </Switch>
+          <ul>
+        <li>
+          <Link to="/product">Csv</Link>
+        </li>
+        <li>
+          <Link to="/admin">Admin</Link>
+        </li>
+      </ul>
           </div>
         </div>
-        <Link to="/admin">Admin</Link> {/* Add a link to the Admin page */}
         <button className="primary-button">Login/Signup</button>
       </div>
       <div className="navbar-menu-container">
-        <HiOutlineBars3 onClick={() => setOpenMenu(true)} />
+        <HiOutlineBars3 onClick={toggleMenu} />
       </div>
       <Drawer open={openMenu} onClose={() => setOpenMenu(false)} anchor="right">
         <Box
@@ -90,6 +87,12 @@ const Navbar = () => {
           <Divider />
         </Box>
       </Drawer>
+      <Router>
+      <Switch>
+        <Route path="/product" component={Csv} />
+        <Route path="/admin" component={Admin} />
+      </Switch>
+      </Router>
     </nav>
   );
 };

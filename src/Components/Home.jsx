@@ -1,12 +1,12 @@
 import React from "react";
 import BannerBackground from "../Assets/home-banner-background.png";
 import "../App.css";
-import {Routes, Route} from 'react-router-dom'
 import Navbar from "./Navbar";
 import Video from "./Video";
 import { FiArrowRight } from "react-icons/fi";
 // import Employee from "./Employee";
 import DataGridTypeMatrixTable from "./DataGridTypeMatrixTable";
+import Testimonial from "./Testimonial"
 
 const Home = () => {
   return (
@@ -36,7 +36,9 @@ const Home = () => {
         </div>
       </div>
       <DataGridTypeMatrixTable/>
+      <Testimonial/>
     </div>
+
   );
 };
 

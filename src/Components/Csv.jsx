@@ -54,32 +54,6 @@ function Csv() {
                 </div>
               )}
             </div>
-            {/* <div className="col-sm-6">
-              <div id="productCarousel" className="carousel slide" data-ride="carousel">
-                {/* Product Carousel 
-                <div className="carousel-inner">
-                  {csvData.slice(2).map((product, index) => (
-                    <div className={`carousel-item ${index === 0 ? 'active' : ''}`} key={index}>
-                      <img src="../Assets/hild_forgives_thorfin.jpg" className="d-block w-100" alt="Product" />
-                      <div className="carousel-caption">
-                        <h5>Product Name: {product[0]}</h5>
-                        <p>Price: {product[1]}</p>*/}
-                        {/* Add more details or customize as needed 
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                <a className="carousel-control-prev" href="#productCarousel" role="button" data-slide="prev">
-                  <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span className="sr-only">Previous</span>
-                </a>
-                <a className="carousel-control-next" href="#productCarousel" role="button" data-slide="next">
-                  <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span className="sr-only">Next</span>
-                </a>
-              </div>
-            </div>
-          </div> */}
           {/* Additional Card for Different Products */}
           <div className="col-sm-6 mt-4">
             <div className="card">

@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'; // Import BrowserRouter and Route
 import Home from './Components/Home';
 import FeedBack from './Components/FeedBack';
 import Testimonial from './Components/Testimonial';
@@ -9,23 +9,26 @@ import Footer from './Components/Footer';
 import QuoteCarousel from './Components/QuoteCarousel';
 import DataGridTypeMatrixTable from './Components/DataGridTypeMatrixTable';
 import Csv from './Components/Csv';
-import Admin from './Components/Admin';
+import Admin from './Components/Admin'; 
+import Navbar from './Components/Navbar';
 
 function App() {
   return (
-    <Router>
+    <Router> {/* Wrap the entire app in a Router */}
       <div className="App">
-        <Home />
-        <QuoteCarousel />
-        <FeedBack />
-        <Testimonial />
-        <Contact />
-        <Footer />
-        {/* <DataGridTypeMatrixTable /> */}
+        {/* <Navbar />
+        <Home/>
+        <FeedBack/>
+        <Testimonial/>
+        <Contact/>
+        <QuoteCarousel/>
+
         <Switch>
-          <Route path="/health-insurance" component={Csv} />
+          <Route path="/csv" component={Csv} />
           <Route path="/admin" component={Admin} />
         </Switch>
+        <Footer /> */}
+        <Admin/>
       </div>
     </Router>
   );

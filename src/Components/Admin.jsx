@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from "./Navbar";
 import BannerBackground from "../Assets/home-banner-background.png";
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -8,15 +8,28 @@ const Admin = () => {
   const [rowData, setRowData] = useState([]);
   const [selectedRow, setSelectedRow] = useState(null); // Track selected row index
   const [showResetConfirmation, setShowResetConfirmation] = useState(false);
+  const [columns, setColumns] = useState([]); // Store all table columns
+  const [displayedColumns, setDisplayedColumns] = useState([]); // Store currently displayed columns
+  const [isLoading, setIsLoading] = useState(false); // Add loading state
+
+  useEffect(() => {
+    // Fetch data and determine columns when the component mounts
+    fetchData();
+  }, []);
 
   const fetchData = async () => {
     try {
-      const response = await fetch("https://jsonplaceholder.typicode.com/users");
+      setIsLoading(true); // Set loading state
+      const response = await fetch("https://dummy.restapiexample.com/api/v1/employees");
       const data = await response.json();
-      setRowData(data);
+      setRowData(data.data); // The API response contains a 'data' property
+      setColumns(Object.keys(data.data[0])); // Determine columns dynamically
+      setDisplayedColumns(Object.keys(data.data[0])); // Initially display all columns
       setSelectedRow(null); // Reset selected row
     } catch (error) {
       console.error('Error fetching data:', error);
+    } finally {
+      setIsLoading(false); // Clear loading state
     }
   };
 
@@ -57,12 +70,44 @@ const Admin = () => {
 
   const addRow = () => {
     const newRow = {
-      username: 'New Username',
-      name: 'New Name',
-      email: 'new@example.com',
+      employee_name: 'New Employee',
+      employee_salary: '0.00',
+      employee_age: 0,
+      profile_image: 'https://dummy.restapiexample.com/img/employee-placeholder.png', // Replace with the actual API image URL
     };
     setRowData([...rowData, newRow]);
     setSelectedRow(null); // Reset selected row
+  };
+
+  const toggleColumn = (column) => {
+    // Toggle the display of a specific column
+    if (displayedColumns.includes(column)) {
+      setDisplayedColumns([column]); // Show only the selected column
+    } else {
+      setDisplayedColumns(Object.keys(rowData[0])); // Show all columns
+    }
+  };
+
+  const handleUpdateRow = async (rowIndex) => {
+    const updatedRow = rowData[rowIndex]; // Get the selected row data
+    try {
+      const response = await fetch(`https://your-api-endpoint/${updatedRow.id}`, {
+        method: 'PUT', // or 'PATCH' depending on your API
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updatedRow),
+      });
+      if (response.ok) {
+        // The update was successful, refetch the data to update the table
+        fetchData();
+      } else {
+        // Handle errors if the update was not successful
+        console.error('Update failed:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error updating data:', error);
+    }
   };
 
   return (
@@ -78,42 +123,66 @@ const Admin = () => {
         <DropdownButton id="dropdown-basic-button" title="Dropdown button">
           <Dropdown.Item onClick={fetchData}>Fetch Data</Dropdown.Item>
           <Dropdown.Item onClick={resetData}>Reset</Dropdown.Item>
+          <Dropdown.Item onClick={() => toggleColumn('employee_name')}>Toggle Employee Name</Dropdown.Item>
         </DropdownButton>
-        {rowData.length > 0 && (
-          <div className="mt-4">
-            <table className="table table-bordered">
-              <thead>
-                <tr>
-                  <th>Username</th>
-                  <th>Name</th>
-                  <th>Email</th>
-                  <th>Actions</th>
-                  {/* Add more column headers as needed */}
-                </tr>
-              </thead>
-              <tbody>
-                {rowData.map((row, index) => (
-                  <tr
-                    key={index}
-                    className={selectedRow === index ? 'selected-row' : ''}
-                    onClick={() => selectRow(index)}
-                  >
-                    <td contentEditable={selectedRow === index} onBlur={(e) => handleEditRow(e.target.textContent, 'username', index)}>{row.username}</td>
-                    <td contentEditable={selectedRow === index} onBlur={(e) => handleEditRow(e.target.textContent, 'name', index)}>{row.name}</td>
-                    <td contentEditable={selectedRow === index} onBlur={(e) => handleEditRow(e.target.textContent, 'email', index)}>{row.email}</td>
-                    <td>
-                      <Button variant="warning" size="sm">Update</Button>{' '}
-                      <Button variant="danger" size="sm" onClick={() => handleDeleteRow(index)}>Delete</Button>
-                    </td>
+        {isLoading ? (
+          <p>Loading...</p>
+        ) : (
+          rowData.length > 0 && (
+            <div className="mt-4">
+              <table className="table table-bordered">
+                <thead>
+                  <tr>
+                    {columns.map((column) => (
+                      displayedColumns.includes(column) && (
+                        <th key={column}>{column}</th>
+                      )
+                    ))}
+                    <th>Actions</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-            <div className="mt-3">
-              <Button variant="primary" onClick={addRow}>Add</Button>{' '}
-              <Button variant="secondary" onClick={resetData}>Reset</Button>
+                </thead>
+                <tbody>
+                  {rowData.map((row, index) => (
+                    <tr
+                      key={index}
+                      className={selectedRow === index ? 'selected-row' : ''}
+                      onClick={() => selectRow(index)}
+                    >
+                      {columns.map((column) => (
+                        displayedColumns.includes(column) && (
+                          <td
+                            key={column}
+                            contentEditable={selectedRow === index}
+                            onBlur={(e) => handleEditRow(e.target.textContent, column, index)}
+                          >
+                            {column === 'profile_image' ? (
+                              <img src={row[column]} alt="Profile" width="50" height="50" />
+                            ) : (
+                              row[column]
+                            )}
+                          </td>
+                        )
+                      ))}
+                      <td>
+                        <Button
+                          variant="warning"
+                          size="sm"
+                          onClick={() => handleUpdateRow(index)} // Pass the row index to the update handler
+                        >
+                          Update
+                        </Button>{' '}
+                        <Button variant="danger" size="sm" onClick={() => handleDeleteRow(index)}>Delete</Button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              <div className="mt-3">
+                <Button variant="primary" onClick={addRow}>Add</Button>{' '}
+                <Button variant="secondary" onClick={resetData}>Reset</Button>
+              </div>
             </div>
-          </div>
+          )
         )}
       </div>
 
