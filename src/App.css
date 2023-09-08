@@ -33,6 +33,11 @@ nav {
 .navbar-menu-container {
   display: none;
 }
+.nav-logo-container{
+  width: 200px;
+  height:auto;
+
+}
 .navbar-links-container a {
   margin-right: 3rem;
   text-decoration: none;
@@ -472,4 +477,20 @@ nav {
 .drop{
   max-width: 40rem;  
   margin: 2rem auto;
+}
+.column-header {
+  padding: 10px; /* Adjust the value as needed for the desired spacing */
+}
+.navbar-links-container a {
+  /* Your regular styles here */
+  color: #333; /* Change this to your desired text color */
+  text-decoration: none;
+  margin-right: 20px; /* Adjust the spacing as needed */
+
+  /* Hover styles */
+  transition: color 0.3s ease-in-out; /* Add smooth transition */
+}
+
+.navbar-links-container a:hover {
+  color: #007bff; /* Change this to your desired hover color */
 }

@@ -35,7 +35,7 @@ const Home = () => {
           
         </div>
       </div>
-      <DataGridTypeMatrixTable/>
+      
       <Testimonial/>
     </div>
 

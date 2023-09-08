@@ -9,26 +9,37 @@ import Footer from './Components/Footer';
 import QuoteCarousel from './Components/QuoteCarousel';
 import DataGridTypeMatrixTable from './Components/DataGridTypeMatrixTable';
 import Csv from './Components/Csv';
-import Admin from './Components/Admin'; 
+import Admin from './Components/Admin';
 import Navbar from './Components/Navbar';
+import ProductMatrixTable from './Components/ProductMatrixTable';
+import Product_Benefits from '../src/Admin/Product_Benefits';
+// import Provider from './Admin/Provider';
+import ProductFeatures from "./Admin/ProductFeatures"
 
 function App() {
   return (
-    <Router> {/* Wrap the entire app in a Router */}
+    <Router>
+      {' '}
+      {/* Wrap the entire app in a Router */}
       <div className="App">
-        {/* <Navbar />
-        <Home/>
+        {/* <Navbar /> */}
+        {/* <Home/>
         <FeedBack/>
         <Testimonial/>
         <Contact/>
-        <QuoteCarousel/>
+        <QuoteCarousel/> */}
 
-        <Switch>
+        {/* <Switch>
           <Route path="/csv" component={Csv} />
           <Route path="/admin" component={Admin} />
-        </Switch>
-        <Footer /> */}
-        <Admin/>
+        </Switch> */}
+        {/* <Footer /> */}
+        {/* <Admin/> */}
+        {/* <Csv/> */}
+        {/* <ProductMatrixTable/> */}
+        {/* <Product_Benefits/> */}
+        <ProductFeatures/>
+        {/* <Provider /> */}
       </div>
     </Router>
   );

@@ -62,6 +62,21 @@ const Navbar = () => {
       </ul>
           </div>
         </div>
+        <div className="dropdown">
+          <button className="dropbtn" onClick={toggleMenu}>
+            Car Insurance
+          </button>
+          <div className={`dropdown-content ${openMenu ? "show" : ""}`}>
+          <ul>
+        <li>
+          <Link to="/product">Csv</Link>
+        </li>
+        <li>
+          <Link to="/admin">Admin</Link>
+        </li>
+      </ul>
+          </div>
+        </div>
         <button className="primary-button">Login/Signup</button>
       </div>
       <div className="navbar-menu-container">
